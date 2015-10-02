@@ -42,6 +42,13 @@ gulp.task('SLDSstyles', function () {
     .pipe(notify({message: 'SLDSstyles task complete'}));
 });
 
+// /Users/mturnure/Sites/AlfredStatic/node_modules/@salesforce-ux/design-system/node_modules/@salesforce-ux/icons/dist/salesforce-lightning-design-system-icons
+gulp.tasks('SLDSicons', function () {
+    return gulp.src('node_modules/@salesforce-ux/design-system/node_modules/@salesforce-ux/icons/dist/salesforce-lightning-design-system-icons')
+        .pipe(gulp.dest('dist/assets/icons'))
+        .pipe(notify({message: 'SLDSicons task complete'}));
+});
+
 gulp.task('scripts', function () {
     return gulp.src(['src/assets/js/main.js'])
         .pipe(concat('main.js'))
@@ -52,11 +59,17 @@ gulp.task('scripts', function () {
         .pipe(notify({message: 'Scripts task complete'}));
 });
 
+gulp.task('images', function () {
+    return gulp.src('src/assets/images/**/*')
+        .pipe(gulp.dest('dist/assets/images'))
+        .pipe(notify({message: 'images task complete'}));
+});
+
 gulp.task('clean', function (cb) {
     del(['dist'], cb);
 });
 
-gulp.task('build', ['html', 'styles', 'SLDSstyles', 'SLDSwebfonts', 'scripts']);
+gulp.task('build', ['html', 'styles', 'SLDSstyles', 'SLDSwebfonts', 'SLDSicons', 'images', 'scripts']);
 
 gulp.task('default', ['build']);
 
