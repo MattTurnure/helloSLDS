@@ -42,11 +42,9 @@ gulp.task('SLDSstyles', function () {
     .pipe(notify({message: 'SLDSstyles task complete'}));
 });
 
-// /Users/mturnure/Sites/AlfredStatic/node_modules/@salesforce-ux/design-system/node_modules/@salesforce-ux/icons/dist/salesforce-lightning-design-system-icons
-gulp.tasks('SLDSicons', function () {
-    return gulp.src('node_modules/@salesforce-ux/design-system/node_modules/@salesforce-ux/icons/dist/salesforce-lightning-design-system-icons')
-        .pipe(gulp.dest('dist/assets/icons'))
-        .pipe(notify({message: 'SLDSicons task complete'}));
+gulp.task('SLDSicons', function () {
+    return gulp.src('node_modules/@salesforce-ux/design-system/node_modules/@salesforce-ux/icons/dist/salesforce-lightning-design-system-icons/**/*')
+        .pipe(gulp.dest('dist/assets/icons'));
 });
 
 gulp.task('scripts', function () {
